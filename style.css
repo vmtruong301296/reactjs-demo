@@ -1,0 +1,57 @@
+* {
+	box-sizing: border-box;
+	/*To include the padding and border in an element's total width and height*/
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	width: 100vw;
+	height: 800px;
+	border: 5px solid gray;
+    display: flex; /*mặc định là flex item -> bố cục từ trái -> phải*/
+    /*Flex container*/
+    /* flex-direction: row; */
+    /* -> row: trục ngang */
+    /* -> row-reverse: trục ngang -> từ phải qua */
+    /* -> column: trục dọc */
+    /* -> column-reverse: trục dọc -> từ dưới lên */
+    /* flex-wrap: wrap;  *//* nowrap: không chuyển xuống hàng tiếp theo mà tràn ra ngoài */
+    /* wrap: tự động xuống hàng*/
+    flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap;*/
+    justify-content: flex-start; 
+    /*flex-start: khoi tao ben trai, flex-end: ben phai, center: giua, space-between: giua đều  hai ben, space-around: giua đều hai ben có khoản trống ở đầu và cuối, space-evenly: khoảng trống ở đầu và các item đều nhau*/
+    align-items: flex-start; 
+    /* căn chỉnh theo trục root */
+    /* flex-start: đầu theo trục root */
+    /* flex-end: cuối theo trình root */
+    /* center: giua theo trình root */
+}
+
+.box {
+	height: 200px;
+	padding: 10px;
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    /* flex-basis: 200px; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1;  */
+    /* khi bị tràn ra ngoài thì mới có giá trị*/
+    flex: 1 1 auto;
+}
+
+.box p {
+	font-size: 20px;
+    color: white;
+}
+
+.box-1 {
+    background-color: rgb(241, 211, 37);
+}
+.box-2 {
+    background-color: rgb(44, 237, 79);
+    flex-grow: 3; /* lấy 3 phần của flex*/
+}
+.box-3 {
+    background-color: rgb(12, 136, 246);
+}
