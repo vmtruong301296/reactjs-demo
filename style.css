@@ -1,57 +1,70 @@
 * {
-	box-sizing: border-box;
-	/*To include the padding and border in an element's total width and height*/
 	padding: 0;
 	margin: 0;
 }
 
+body {
+	padding: 20px;
+}
+
+.item {
+	background-color: gold;
+	border: 1px solid gray;
+	min-height: 50px;
+}
+
 .container {
-	width: 100vw;
-	height: 800px;
-	border: 5px solid gray;
-    display: flex; /*mặc định là flex item -> bố cục từ trái -> phải*/
-    /*Flex container*/
-    /* flex-direction: row; */
-    /* -> row: trục ngang */
-    /* -> row-reverse: trục ngang -> từ phải qua */
-    /* -> column: trục dọc */
-    /* -> column-reverse: trục dọc -> từ dưới lên */
-    /* flex-wrap: wrap;  *//* nowrap: không chuyển xuống hàng tiếp theo mà tràn ra ngoài */
-    /* wrap: tự động xuống hàng*/
-    flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap;*/
-    justify-content: flex-start; 
-    /*flex-start: khoi tao ben trai, flex-end: ben phai, center: giua, space-between: giua đều  hai ben, space-around: giua đều hai ben có khoản trống ở đầu và cuối, space-evenly: khoảng trống ở đầu và các item đều nhau*/
-    align-items: flex-start; 
-    /* căn chỉnh theo trục root */
-    /* flex-start: đầu theo trục root */
-    /* flex-end: cuối theo trình root */
-    /* center: giua theo trình root */
+    height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/* grid-template-columns: repeat(3, 1fr 2fr);  */
+	/* fraction: độ dài tương đối */
+	/* grid-template-columns: 200px 2fr 1fr; */
+	grid-template-rows: 100px 1fr 1fr 100px; 
+	/* Giá trị width từng cột*/
+	/* gap: 10px;  */
+	/* grid-template-rows: 100px 200px 300px;  */
+	/* Giá trị height từng hàng: Chiều cao k lấy theo item mà lấy theo giá trị đang được setting*/
+	/* grid-auto-rows: 200px;  */
+	/* tự động set height rows */
+	grid-auto-rows: minmax(60px, auto); /* tạo layout flexible: rows height dựa vào content */
+	grid-template-areas:
+		"header header header"
+		"sidebar content content"
+		"sidebar comment comment"
+        "footer footer footer";
+    column-gap: 10px; /* khoang cach 10px giua cac column */
+    row-gap: 10px; /* khoang cach 10px giua cac row */
+
+}
+.item-1 {
+    grid-area: header;
 }
 
-.box {
-	height: 200px;
-	padding: 10px;
-    /* flex-grow: 1; */
-    /* flex-shrink: 1; */
-    /* flex-basis: 200px; */
-    /* flex-grow: 1; */
-    /* flex-shrink: 1;  */
-    /* khi bị tràn ra ngoài thì mới có giá trị*/
-    flex: 1 1 auto;
+.item-2 {
+    grid-area: sidebar;
 }
 
-.box p {
-	font-size: 20px;
-    color: white;
+.item-3 {
+    grid-area: content;
 }
 
-.box-1 {
-    background-color: rgb(241, 211, 37);
+.item-5 {
+	/* grid-column-start: 2;
+    grid-column-start: 5;
+
+    grid-row-start: 2;
+    grid-row-start: 5; */
+
+	/* grid-column: 2 / 4;  */
+    /* bắt đầu từ 2 và dùng 4 theo line column */
+	/* grid-row: 2 / 4;  */
+    /* bắt đầu 2 và dùng 4 theo line row */
+    grid-area: footer;
 }
-.box-2 {
-    background-color: rgb(44, 237, 79);
-    flex-grow: 3; /* lấy 3 phần của flex*/
-}
-.box-3 {
-    background-color: rgb(12, 136, 246);
+
+.item-4 {
+	/* grid-row: 2 / 5;  */
+    /* bắt đầu 2 và dùng 5 theo line row */
+    grid-area: comment;
 }
